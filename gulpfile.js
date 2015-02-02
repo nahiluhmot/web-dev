@@ -17,27 +17,33 @@ gulp.task('html', function() {
     .pipe(gulp.dest('./build/'));
 });
 
+gulp.task('css', function() {
+  return gulp.src('./app/css/**/*.css')
+    .pipe(gulp.dest('./build/css'));
+});
+
 gulp.task('vendored-css', function() {
   return gulp.src('./bower_components/bootstrap/dist/css/**/*')
-    .pipe(gulp.dest('build/css/vendored'));
+    .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('vendored-js', function() {
-  return gulp.src('./bower_components/bootstrap/dist/js/**/*')
-    .pipe(gulp.dest('build/js/vendored'));
+  return gulp.src(['./bower_components/bootstrap/dist/js/**/*', './bower_components/jquery/dist/**/*'])
+    .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('vendored-fonts', function() {
   return gulp.src('./bower_components/bootstrap/dist/fonts/**/*')
-    .pipe(gulp.dest('build/fonts/vendored'));
+    .pipe(gulp.dest('./build/fonts'));
 });
 
 gulp.task('vendored', ['vendored-css', 'vendored-js', 'vendored-fonts']);
 
-gulp.task('build', ['html', 'vendored']);
+gulp.task('build', ['html', 'css', 'vendored']);
 
 gulp.task('watch', function() {
-  return gulp.watch('./app/html/**/*.html', ['html']);
+  gulp.watch('./app/html/**/*.html', ['html']);
+  gulp.watch('./app/css/**/*.css', ['css']);
 });
 
 gulp.task('serve', ['build', 'watch'], function() {

@@ -1,0 +1,21 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.button-cell {
+  text-align: right;
+}
+
+.custom-glyph {
+  color: white;
+}
