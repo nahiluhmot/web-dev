@@ -16,6 +16,7 @@ RUN chown -R app:app /opt/app/
 # Build the app
 WORKDIR /opt/app
 USER app
+RUN rm -rf node_modules bower_components
 RUN npm install
 RUN bower install
 RUN gulp clean
