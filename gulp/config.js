@@ -17,9 +17,10 @@ module.exports = {
     paths: [clientDir + 'less/includes/']
   },
   serve: {
-    port: parseInt(process.env.PORT) || 1337,
-    root: buildDir,
-    index: 'index.html'
+    server: {
+      baseDir: [buildDir]
+    },
+    files: [buildDir + '**/*']
   },
   vendored: {
     css: {
