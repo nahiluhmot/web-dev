@@ -22,6 +22,4 @@ Assuming that all worked, you can now run the serve via the following command:
 ~/web-dev/ $ gulp serve
 ```
 
-While this is running, you can hit `http://localhost:3000/` in your browser to view the application.
-
-
+While this is running, you can hit `http://localhost:1337/` in your browser to view the application.
