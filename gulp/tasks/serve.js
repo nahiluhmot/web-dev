@@ -5,6 +5,6 @@ var config = require('../config.js').serve,
 /**
  * Run a web server for the application.
  */
-gulp.task('serve', ['build', 'watch'], function() {
+gulp.task('serve', ['watch'], function() {
   serve(config.port, config.root, config.index);
 });

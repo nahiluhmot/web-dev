@@ -7,13 +7,14 @@ var buildDir = './build/',
  */
 module.exports = {
   clean: buildDir,
-  css: {
-    src: appDir + 'css/**/*.css',
-    dest: buildDir + 'css/'
-  },
   html: {
     src: appDir + 'html/**/*.html',
     dest: buildDir
+  },
+  less: {
+    src: appDir + 'less/**/*.less',
+    dest: buildDir + 'css/',
+    paths: [appDir + 'less/includes/']
   },
   serve: {
     port: parseInt(process.env.PORT) || 1337,
