@@ -23,4 +23,4 @@ RUN gulp build
 
 # Default command
 USER root
-CMD /usr/sbin/nginx -c /opt/app/nginx.conf -g "daemon off;"
+CMD /usr/sbin/nginx -c /opt/app/nginx/nginx.conf -g "daemon off;"
