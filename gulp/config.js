@@ -1,5 +1,5 @@
 var buildDir = './build/',
-    appDir = './app/',
+    clientDir = './client/',
     bowerDir = './bower_components/';
 
 /**
@@ -8,13 +8,13 @@ var buildDir = './build/',
 module.exports = {
   clean: buildDir,
   html: {
-    src: appDir + 'html/**/*.html',
+    src: clientDir + 'html/**/*.html',
     dest: buildDir
   },
   less: {
-    src: appDir + 'less/**/*.less',
+    src: clientDir + 'less/**/*.less',
     dest: buildDir + 'css/',
-    paths: [appDir + 'less/includes/']
+    paths: [clientDir + 'less/includes/']
   },
   serve: {
     port: parseInt(process.env.PORT) || 1337,
