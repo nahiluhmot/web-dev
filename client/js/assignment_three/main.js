@@ -37,6 +37,11 @@ window.onload = function() {
 
       $('#create-modal').modal('hide');
     });
+
+    document.getElementById('inputCourseName').value = '';
+    document.getElementById('inputCourseCategory').value = '';
+    document.getElementById('inputCourseDateCreated').value = '';
+    document.getElementById('inputCourseDescription').value = '';
   };
 
   window.showUpdateModal = function(n) {
