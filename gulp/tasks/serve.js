@@ -1,6 +1,6 @@
-var browserSync = require('browser-sync'),
-    config = require('../config.js').serve,
-    gulp = require('gulp');
+var browserSync = require('browser-sync');
+var config = require('../config.js').serve;
+var gulp = require('gulp');
 
 /**
  * Run a web server for the application.

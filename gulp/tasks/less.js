@@ -1,7 +1,7 @@
-var config = require('../config.js').less,
-    gulp = require('gulp'),
-    handleErrors = require('../util/handleErrors.js');
-    less = require('gulp-less');
+var config = require('../config.js').less;
+var gulp = require('gulp');
+var handleErrors = require('../util/handleErrors.js');
+var less = require('gulp-less');
 
 /**
  * Compile the less sources.

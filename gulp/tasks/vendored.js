@@ -1,5 +1,5 @@
-var config = require('../config.js').vendored,
-    gulp = require('gulp');
+var config = require('../config.js').vendored;
+var gulp = require('gulp');
 
 /**
  * Copy all of the vendored assets to the build dir.

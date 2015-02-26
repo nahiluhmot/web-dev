@@ -1,6 +1,9 @@
-var buildDir = './build/',
-    clientDir = './client/',
-    bowerDir = './bower_components/';
+var getFolders = require('./util/getFolders.js');
+
+var bowerDir = './bower_components/';
+var buildDir = './build/';
+var clientDir = './client/';
+var gulpDir = './gulp/';
 
 /**
  * Configuration for each task.
@@ -10,6 +13,15 @@ module.exports = {
   html: {
     src: clientDir + 'html/**/*.html',
     dest: buildDir
+  },
+  js: {
+    root: clientDir + 'js/',
+    dest: buildDir + 'js/',
+    dirs: getFolders(clientDir + 'js/')
+  },
+  lint: {
+    src: [clientDir + 'js/**/*.js', gulpDir + 'js/**/*.js'],
+    reporter: 'jshint-stylish'
   },
   less: {
     src: clientDir + 'less/**/*.less',
@@ -30,7 +42,8 @@ module.exports = {
     js: {
       src: [
         bowerDir + 'bootstrap/dist/js/**/*',
-        bowerDir + 'jquery/dist/**/*'
+        bowerDir + 'jquery/jquery.min.js',
+        bowerDir + 'jquery-ui/jquery-ui.min.js'
       ],
       dest: buildDir + 'js/'
     },

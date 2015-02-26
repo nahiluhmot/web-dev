@@ -1,6 +1,6 @@
-var config = require('../config.js').clean,
-    gulp = require('gulp'),
-    rimraf = require('rimraf');
+var config = require('../config.js').clean;
+var gulp = require('gulp');
+var rimraf = require('rimraf');
 
 /**
  * Remove all build state.

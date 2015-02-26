@@ -1,5 +1,5 @@
-var config = require('../config.js').html,
-    gulp = require('gulp');
+var config = require('../config.js').html;
+var gulp = require('gulp');
 
 /**
  * Copy the html to the build dir.
