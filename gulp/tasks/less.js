@@ -1,6 +1,6 @@
 var config = require('../config.js').less;
 var gulp = require('gulp');
-var handleErrors = require('../util/handleErrors.js');
+var handleErrors = require('../util/handle-errors.js');
 var less = require('gulp-less');
 var merge = require('merge-stream');
 var render = require('mustache').render;
@@ -18,8 +18,8 @@ gulp.task('less', function() {
     });
 
     return gulp.src(src)
-      .pipe(less({ paths: paths }))
       .on('error', handleErrors)
+      .pipe(less({ paths: paths }))
       .pipe(gulp.dest(dest));
   });
 

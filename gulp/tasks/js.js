@@ -1,6 +1,7 @@
 var config = require('../config.js').js;
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var handleErrors = require('../util/handle-errors.js');
 var merge = require('merge-stream');
 var path = require('path');
 var rename = require('gulp-rename');
@@ -17,6 +18,7 @@ gulp.task('js', function() {
     var dest = render(config.dest, { project: dir });
 
     return gulp.src(src)
+      .on('error', handleErrors)
       .pipe(concat('index.js'))
       .pipe(transpiler())
       .pipe(gulp.dest(dest))

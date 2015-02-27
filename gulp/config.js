@@ -1,11 +1,11 @@
-var getFolders = require('./util/getFolders.js');
+var getDirs = require('./util/get-dirs.js');
 
 var bowerDir = './bower_components/';
 var buildDir = './build/';
 var clientDir = './client/';
 var gulpDir = './gulp/';
 var vendoredDir = buildDir + 'vendored/';
-var subProjects = getFolders(clientDir);
+var subProjects = getDirs(clientDir);
 
 /**
  * Configuration for each task.
