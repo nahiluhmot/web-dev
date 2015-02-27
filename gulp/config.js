@@ -35,6 +35,10 @@ module.exports = {
     dest: buildDir + '{{project}}/css',
     paths: [clientDir + '{{project}}/less/includes/']
   },
+  link: {
+    src: buildDir + 'index/html/index.html',
+    dest: buildDir + 'index.html'
+  },
   serve: {
     server: {
       baseDir: [buildDir]

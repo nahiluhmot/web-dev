@@ -1,7 +1,7 @@
 var config = require('../config.js').html;
 var gulp = require('gulp');
 var merge = require('merge-stream');
-var render = require('Mustache').render;
+var render = require('mustache').render;
 
 /**
  * Copy the html to the build dir.

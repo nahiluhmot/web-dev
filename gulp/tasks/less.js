@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var handleErrors = require('../util/handleErrors.js');
 var less = require('gulp-less');
 var merge = require('merge-stream');
-var render = require('Mustache').render;
+var render = require('mustache').render;
 
 /**
  * Compile the less sources.

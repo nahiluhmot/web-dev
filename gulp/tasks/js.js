@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var merge = require('merge-stream');
 var path = require('path');
 var rename = require('gulp-rename');
-var render = require('Mustache').render;
+var render = require('mustache').render;
 var uglify = require('gulp-uglify');
 var transpiler = require('gulp-babel');
 
