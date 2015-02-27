@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var merge = require('merge-stream');
 var path = require('path');
 var rename = require('gulp-rename');
+var render = require('Mustache').render;
 var uglify = require('gulp-uglify');
 var transpiler = require('gulp-babel');
 
@@ -12,13 +13,16 @@ var transpiler = require('gulp-babel');
  */
 gulp.task('js', function() {
   var tasks = config.dirs.map(function(dir) {
-    return gulp.src(path.join(config.root, dir, '/*.js'))
-      .pipe(concat(dir + '.js'))
+    var src = render(config.src, { project: dir });
+    var dest = render(config.dest, { project: dir });
+
+    return gulp.src(src)
+      .pipe(concat('index.js'))
       .pipe(transpiler())
-      .pipe(gulp.dest(config.dest))
+      .pipe(gulp.dest(dest))
       .pipe(uglify())
-      .pipe(rename(dir + '.min.js'))
-      .pipe(gulp.dest(config.dest));
+      .pipe(rename('index.min.js'))
+      .pipe(gulp.dest(dest));
   });
 
   return merge(tasks);

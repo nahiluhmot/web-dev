@@ -61,7 +61,7 @@ class CourseManager {
   update(n, callback) {
     let course = this.read(n);
     callback(course);
-    this.triggerHandlers()
+    this.triggerHandlers();
     return course;
   }
 

@@ -4,6 +4,8 @@ var bowerDir = './bower_components/';
 var buildDir = './build/';
 var clientDir = './client/';
 var gulpDir = './gulp/';
+var vendoredDir = buildDir + 'vendored/';
+var subProjects = getFolders(clientDir);
 
 /**
  * Configuration for each task.
@@ -11,22 +13,27 @@ var gulpDir = './gulp/';
 module.exports = {
   clean: buildDir,
   html: {
-    src: clientDir + 'html/**/*.html',
-    dest: buildDir
+    dirs: subProjects,
+    src: clientDir + '{{project}}/html/**/*.html',
+    dest: buildDir + '{{project}}/html'
   },
   js: {
-    root: clientDir + 'js/',
-    dest: buildDir + 'js/',
-    dirs: getFolders(clientDir + 'js/')
+    src: clientDir + '{{project}}/js/**/*.js',
+    dest: buildDir + '{{project}}/js/',
+    dirs: subProjects
   },
   lint: {
-    src: [clientDir + 'js/**/*.js', gulpDir + 'js/**/*.js'],
+    src: [clientDir + '**/*.js', gulpDir + 'js/**/*.js'],
+    jshintOpts: {
+      esnext: true
+    },
     reporter: 'jshint-stylish'
   },
   less: {
-    src: clientDir + 'less/**/*.less',
-    dest: buildDir + 'css/',
-    paths: [clientDir + 'less/includes/']
+    dirs: subProjects,
+    src: clientDir + '{{project}}/less/**/*.less',
+    dest: buildDir + '{{project}}/css',
+    paths: [clientDir + '{{project}}/less/includes/']
   },
   serve: {
     server: {
@@ -37,7 +44,7 @@ module.exports = {
   vendored: {
     css: {
       src: bowerDir + 'bootstrap/dist/css/**/*',
-      dest: buildDir + 'css/'
+      dest: vendoredDir + 'css/'
     },
     js: {
       src: [
@@ -45,11 +52,16 @@ module.exports = {
         bowerDir + 'jquery/jquery.min.js',
         bowerDir + 'jquery-ui/jquery-ui.min.js'
       ],
-      dest: buildDir + 'js/'
+      dest: vendoredDir + 'js/'
     },
     fonts: {
       src: './bower_components/bootstrap/dist/fonts/**/*',
-      dest: buildDir + 'fonts/'
+      dest: vendoredDir + 'fonts/'
     }
+  },
+  watch: {
+    html: clientDir + '**/*.html',
+    less: clientDir + '**/*.less',
+    js: clientDir + '**/*.js',
   }
 };

@@ -44,7 +44,7 @@ class Course {
       throw Errors.invalidCourse(errors);
     }
   }
-};
+}
 
 /**
  * The list of valid categories.
