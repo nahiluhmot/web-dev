@@ -5,7 +5,7 @@ var Errors = {
   /**
    * Thrown when an invalid course is created.
    */
-  invalidCourse: function(errors) {
+  invalidCourse(errors) {
     return {
       type: 'InvalidCourseError',
       errors: errors
@@ -15,7 +15,7 @@ var Errors = {
   /**
    * Thrown when an invalid course id is referenced.
    */
-  noSuchCourse: function(id) {
+  noSuchCourse(id) {
     return {
       type: 'NoSuchCourseError',
       id: id

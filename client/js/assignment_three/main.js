@@ -3,14 +3,23 @@
  */
 window.onload = function() {
   // Set up global state
-  var manager = new CourseManager();
-  var defaultCourses = [
-    { name: 'Java 101'     , category: 'PROG', dateCreated: '1/1/2015', description: 'Wow'     },
-    { name: 'MongoDB 101'  , category: 'DB'  , dateCreated: '2/1/2015', description: 'Good'    },
-    { name: 'Express 101'  , category: 'PROG', dateCreated: '3/1/2015', description: 'Better'  },
-    { name: 'AngularJS 101', category: 'WEB' , dateCreated: '4/1/2015', description: 'Best'    },
-    { name: 'NodeJS 101'   , category: 'PROG', dateCreated: '5/1/2015', description: 'Awesome' }
-  ];
+  let manager = new CourseManager();
+  let createModal = new EditModal('#create-modal', '#modal-submit',
+    {
+      inputCourseName: '',
+      inputCourseCategory: '',
+      inputCourseDateCreated: '',
+      inputCourseDescription: '',
+    },
+    (name, category, created, description) => {
+      manager.create({
+        name: name,
+        category: category,
+        dateCreated: new Date(created),
+        description: description
+      });
+    }
+  );
 
   manager.onChange(function() {
     var courses = manager.all();
@@ -18,56 +27,45 @@ window.onload = function() {
     $('#courses-table > tbody').replaceWith(board);
   });
 
-  defaultCourses.map(function(course) {
-    manager.create(course);
-  });
+  /**
+   * Show window the global button handlers.
+   */
+  window.showCreateModal = () => createModal.show();
+  window.destroyCourse = n => manager.destroy(n);
+  window.showUpdateModal = n => {
+    let course = manager.read(n);
+    let modal = new EditModal('#create-modal', '#modal-submit',
+      {
+        inputCourseName: course.name,
+        inputCourseCategory: course.category,
+        inputCourseDateCreated: BoardPresenter.renderDate(course.dateCreated),
+        inputCourseDescription: course.description,
+      },
+      (name, category, created, description) => {
+        manager.update(n, () => {
+          let newDate = (new Date($('#inputCourseDateCreated').val()));
+          newDate.setDate(newDate.getDate() + 1);
+          course.name = $('#inputCourseName').val();
+          course.category = $('#inputCourseCategory').val();
+          course.dateCreated = newDate;
+          course.description = $('#inputCourseDescription').val();
+        });
+      }
+    );
 
-  // Set up callbacks for the window
-
-  window.showCreateModal = function() {
-    $('#create-modal').modal();
-    $('#modal-submit').unbind('click');
-    $('#modal-submit').click(function() {
-      manager.create({
-        name: $('#inputCourseName').val(),
-        category: $('#inputCourseCategory').val(),
-        dateCreated: new Date($('#inputCourseDateCreated').val()),
-        description: $('#inputCourseDescription').val()
-      });
-
-      $('#create-modal').modal('hide');
-    });
-
-    document.getElementById('inputCourseName').value = '';
-    document.getElementById('inputCourseCategory').value = '';
-    document.getElementById('inputCourseDateCreated').value = '';
-    document.getElementById('inputCourseDescription').value = '';
+    modal.show();
   };
 
-  window.showUpdateModal = function(n) {
-    var course = manager.read(n);
+  /**
+   * Populate dummy data.
+   */
+  let defaultCourses = [
+    { name: 'Java 101'     , category: 'PROG', dateCreated: '1/1/2015', description: 'Wow'     },
+    { name: 'MongoDB 101'  , category: 'DB'  , dateCreated: '2/1/2015', description: 'Good'    },
+    { name: 'Express 101'  , category: 'PROG', dateCreated: '3/1/2015', description: 'Better'  },
+    { name: 'AngularJS 101', category: 'WEB' , dateCreated: '4/1/2015', description: 'Best'    },
+    { name: 'NodeJS 101'   , category: 'PROG', dateCreated: '5/1/2015', description: 'Awesome' }
+  ];
 
-    $('#create-modal').modal();
-    $('#modal-submit').unbind('click');
-    $('#modal-submit').click(function() {
-      manager.update(n, function(course) {
-        var newDate = (new Date($('#inputCourseDateCreated').val()));
-        newDate.setDate(newDate.getDate() + 1);
-        course.name = $('#inputCourseName').val();
-        course.category = $('#inputCourseCategory').val();
-        course.dateCreated = newDate;
-        course.description = $('#inputCourseDescription').val();
-        $('#create-modal').modal('hide');
-      });
-    });
-
-    document.getElementById('inputCourseName').value = course.name;
-    document.getElementById('inputCourseCategory').value = course.category;
-    document.getElementById('inputCourseDateCreated').value = BoardPresenter.renderDate(course.dateCreated);
-    document.getElementById('inputCourseDescription').value = course.description;
-  };
-
-  window.destroyCourse = function(n) {
-    manager.destroy(n);
-  };
+  defaultCourses.map(course => manager.create(course));
 };

@@ -1,27 +1,24 @@
 /**
- * This object represents a Course. It contains validation and presentation
- * logic.
+ * This object represents a Course. It contains only validation logic.
  */
-var Course = function(id, name, category, dateCreated, description) {
-  this.id = id;
-  this.name = name;
-  this.category = category;
-  this.dateCreated = dateCreated;
-  this.description = description;
-};
+class Course {
+  /**
+   * Create a new course.
+   */
+  constructor(id, name, category, dateCreated, description) {
+    this.id = id;
+    this.name = name;
+    this.category = category;
+    this.dateCreated = dateCreated;
+    this.description = description;
+  }
 
-/**
- * The list of valid categories.
- */
-Course.VALID_CATEGORIES = ['PROG', 'DB', 'WEB'];
-
-Course.prototype = {
   /**
    * Test if the caller is a valid Course, raising an InvalidCourseError
    * otherwise.
    */
-  validate: function() {
-    var errors = {};
+  validate() {
+    let errors = {};
 
     if ((typeof this.id !== 'number') || (this.id <= 0)) {
       errors.id = 'ID must be a positive integer';
@@ -46,5 +43,10 @@ Course.prototype = {
     if (Object.keys(errors).length > 0) {
       throw Errors.invalidCourse(errors);
     }
-  },
+  }
 };
+
+/**
+ * The list of valid categories.
+ */
+Course.VALID_CATEGORIES = ['PROG', 'DB', 'WEB'];

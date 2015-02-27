@@ -6,7 +6,7 @@ var BoardPresenter = {
   /**
    * Render the list of courses into a table body.
    */
-  renderCourses: function(courses) {
+  renderCourses(courses) {
     return [
       '<tbody>',
         courses.map(BoardPresenter.renderCourse).join(''),
@@ -17,7 +17,7 @@ var BoardPresenter = {
   /**
    * Render the given course into a table row.
    */
-  renderCourse: function(course) {
+  renderCourse(course) {
     return [
       '<tr class="course">',
         '<td class="courseName">',
@@ -48,10 +48,10 @@ var BoardPresenter = {
   /**
    * Render the given date into the following format: YYYY-MM-DD.
    */
-  renderDate: function(date) {
-    var year = date.getFullYear();
-    var month = (date.getMonth() + 1).toString();
-    var day = date.getDate().toString();
+  renderDate(date) {
+    let year = date.getFullYear();
+    let month = (date.getMonth() + 1).toString();
+    let day = date.getDate().toString();
 
     if (month.length < 2) {
       month = '0' + month;
