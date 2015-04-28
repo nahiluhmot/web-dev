@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en-us">
   <head>
-    <link rel="stylesheet" type="text/css" href="/vendored/css/bootstrap-theme.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tom Hulihan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <link rel="stylesheet" type="text/css" href="/vendored/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendored/css/flat-ui.min.css">
     <link rel="stylesheet" type="text/css" href="/index/css/index.css">
 
     <script type="text/javascript" src="/vendored/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/vendored/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/vendored/js/flat-ui.min.js"></script>
   </head>
   <body>
-    <div id="top-level">
-      <div class="container-fluid">
+    <div id="top-level" class="center container">
+      <div class="row">
         <div class="jumbotron">
 
           <h1>Tom Hulihan</h1>
@@ -21,40 +27,93 @@
             <a href="https://github.com/nahiluhmot/web-dev">GitHub</a>.
           </p>
         </div>
+      </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">Assignments</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>
+                <a href="/one/html/index.html">
+                  One - Study List
+                </a>
+              </h5>
+            </div>
+            <div class="panel-body">
+              Simple study list without styling.
+            </div>
+            <div class="panel-footer">
+              <a href="https://github.com/nahiluhmot/web-dev/tree/master/client/one">
+                Source
+              </a>
+            </div>
+          </div>
+        </div>
 
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <td><strong>#</strong></td>
-                <td><strong>Link</strong></td>
-                <td><strong>Description</strong></td>
-              </tr>
-            </thead>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>
+                <a href="/two/html/index.html">
+                  Two - Profile (no JS)
+                </a>
+              </h5>
+            </div>
+            <div class="panel-body">
+              Bootstrap-styled profile page
+            </div>
+            <div class="panel-footer">
+              <a href="https://github.com/nahiluhmot/web-dev/tree/master/client/two">
+                Source
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><a href="/one/html/index.html">Study List</a></td>
-                <td>Simple study list with no styling</td>
-              </tr>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>
+                <a href="/three/html/index.html">
+                  Three - Profile (jQuery)
+                </a>
+              </h5>
+            </div>
+            <div class="panel-body">
+              Bootstrap-styled profile page with jQuery
+            </div>
+            <div class="panel-footer">
+              <a href="https://github.com/nahiluhmot/web-dev/tree/master/client/three">
+                Source
+              </a>
+            </div>
+          </div>
+        </div>
 
-              <tr>
-                <td>2</td>
-                <td><a href="/two/html/index.html">Profile</a></td>
-                <td>Bootstrap-styled profile page (no JS)</td>
-              </tr>
-            </tbody>
-
-              <tr>
-                <td>3</td>
-                <td><a href="/three/html/index.html">Profile (with jQuery)</a></td>
-                <td>Bootstrap-styled profile page with jQuery</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>
+                <a href="http://final.tomhulihancs4550.me">
+                  Final
+                </a>
+              </h5>
+            </div>
+            <div class="panel-body">
+              Guitar tab website written using React and Ruby.
+            </div>
+            <div class="panel-footer">
+              <a href="https://github.com/nahiluhmot/tabular-backend">
+                Backend Source
+              </a>
+              |
+              <a href="https://github.com/nahiluhmot/tabular-frontend">
+                Frontend Source
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

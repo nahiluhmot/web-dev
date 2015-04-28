@@ -47,19 +47,26 @@ module.exports = {
   },
   vendored: {
     css: {
-      src: bowerDir + 'bootstrap/dist/css/**/*',
+      src: [
+        bowerDir + 'bootstrap/dist/css/**/*',
+        bowerDir + 'flat-ui/dist/css/flat-ui.min.css'
+      ],
       dest: vendoredDir + 'css/'
     },
     js: {
       src: [
         bowerDir + 'bootstrap/dist/js/**/*',
+        bowerDir + 'flat-ui/dist/js/flat-ui.min.js',
         bowerDir + 'jquery/jquery.min.js',
         bowerDir + 'jquery-ui/jquery-ui.min.js'
       ],
       dest: vendoredDir + 'js/'
     },
     fonts: {
-      src: './bower_components/bootstrap/dist/fonts/**/*',
+      src: [
+        bowerDir + 'bootstrap/dist/fonts/**/*',
+        bowerDir + 'flat-ui/dist/fonts/**/*'
+      ],
       dest: vendoredDir + 'fonts/'
     }
   },
